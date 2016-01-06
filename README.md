@@ -3,6 +3,8 @@
 ## What it is
 A simple jQuery plugin that allows you to create a stacked banner based on a set of divs. 
 
+<img src="https://raw.github.com/fiote/fsbanner/master/images/giphy.gif" width="100%" />
+
 ## Is something else required?
 Yes. You'll need Jquery 2.1+.
 
