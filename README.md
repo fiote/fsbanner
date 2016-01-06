@@ -8,6 +8,10 @@ Yes. You'll need Jquery 2.1+.
 
 Ok, you probably wont need that exactly version, but since I created this using it, that's what I can recomend.
 
+Examples
+--------
+Want to see fsBanner in action? Check http://murilo.codware.com/fsbanner/example.html :)
+
 ## Usage
 Download the package and reference the JavaScript and CSS files manually:
 
@@ -62,6 +66,3 @@ Of course, you can set up options!
 | hideParent    | selector      | null    | If set, the whenEmpty option will be ignored. When there is no banner and hideParent is set, the script will hide the element based on the selector passed. | 
 | onChanged     | function      | null    | Whenever there is a change on the expanded banner (you just expanded one, or a width reset occured) this function will be fired. It receives 2 parameters: the expanded banner (if any) and the expanded-before-that banner (if any). Those parameters are jQuery $elements, so you may want to use $param[0] or $param.eq(0) if you really need to DOM element. |
 
-Examples
---------
-Want to see fsBanner in action? Check http://murilo.codware.com/fsbanner/example.html :)
