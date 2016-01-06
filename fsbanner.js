@@ -7,7 +7,7 @@ var fsBanner = function(container,options) {
 		'whenEmpty':{},
 		'trigger':'click',
 		'hideParent':null,
-		'onClicked':null
+		'onChanged':null
 	}
 
 	this.options = $.extend({}, defaults, options);
@@ -57,46 +57,46 @@ var fsBanner = function(container,options) {
 		this.updateHtml();
 	};
 
-	this.selectItem = function($clicked,iclicked,forceClick) {
-		this.$lastclicked = this.$clicked;
+	this.selectItem = function($expanded,iexpanded,forceClick) {
+		this.$lastexpanded = this.$expanded;
 
 		if (forceClick) this.ilast = null;
-		if (iclicked == this.ilast) {
-			this.$clicked = null;			
+		if (iexpanded == this.ilast) {
+			this.$expanded = null;			
 			this.resetcss();
 		} else {
-			this.$clicked = $clicked;			
+			this.$expanded = $expanded;			
 			this.items.each(function(i) {
 				var $item = $(this);
-				if (i <= iclicked) {
+				if (i <= iexpanded) {
 					$item.stop().animate({'left':i*self.mini});
 				} else {
 					$item.stop().animate({'left':i*self.mini+self.widmain});
 				}
 				if (self.options.showName) {
 					var $name = $item.find('.name');
-					var method = (i == iclicked) ? 'removeClass' : 'addClass';				
+					var method = (i == iexpanded) ? 'removeClass' : 'addClass';				
 					if (method == 'addClass' && $name.hasClass('minimized')) method = '';
 					if (method) $name.hide()[method]('minimized').fadeIn('fast');
 				}
 			});
-			this.ilast = iclicked;
-			this.updateHtml($clicked);
+			this.ilast = iexpanded;
+			this.updateHtml($expanded);
 		}
-		this.fireClicked();
+		this.fireChanged();
 	};
 
-	this.updateHtml = function($clicked) {
-		this.$clicked = $clicked;
+	this.updateHtml = function($expanded) {
+		this.$expanded = $expanded;
 
 		var $parent = $(self.options.hideParent);
 		$.each(this.options.toUpdate,function(field,selector) {
 			var $obj = $(selector);
 			var showit = false;
 			var value = '';
-			if ($clicked) {
+			if ($expanded) {
 				$parent.show();
-				value = $clicked.find('.'+field).html();
+				value = $expanded.find('.'+field).html();
 				showit = true;
 			} else {
 				if ($parent.length) {
@@ -114,9 +114,9 @@ var fsBanner = function(container,options) {
 		});
 	};
 
-	this.fireClicked = function() {
-		if (this.options.onClicked) {
-			this.options.onClicked(this.$clicked,this.$lastclicked);
+	this.fireChanged = function() {
+		if (this.options.onChanged) {
+			this.options.onChanged(this.$expanded,this.$lastexpanded);
 		}
 	};
 
