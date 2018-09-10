@@ -12,7 +12,7 @@ Ok, you probably wont need that exactly version, but since I created this using 
 
 Examples
 --------
-Want to see fsBanner in action? Check http://murilo.codware.com/fsbanner/example.html :)
+Want to see fsBanner in action? Check http://murilo.codware.com/_projects/fsbanner/example.html :)
 
 ## Usage
 Download the package and reference the JavaScript and CSS files manually:
